@@ -3,36 +3,21 @@ defmodule Game do
   Documentation for `Game`.
   """
 
-  @stone 1
-  @paper 2
-  @scissor 3
-
   def play(first_player_choice, second_player_choice) do
     result(first_player_choice, second_player_choice)
   end
 
   defp result(first_player_choice, second_player_choice) do
-    cond do
-      first_player_choice == second_player_choice ->
-        {:ok, "Draw!"}
+    game_calc_result = game_calc(first_player_choice, second_player_choice)
 
-      first_player_choice == @scissor && second_player_choice == @paper ->
-        {:ok, "First player win!!!"}
-
-      first_player_choice == @paper && second_player_choice == @stone ->
-        {:ok, "First player win!!!"}
-
-      first_player_choice == @stone && second_player_choice == @scissor ->
-        {:ok, "First player win!!!"}
-
-      first_player_choice == @paper && second_player_choice == @scissor ->
-        {:ok, "Second player win!!!"}
-
-      first_player_choice == @stone && second_player_choice == @paper ->
-        {:ok, "Second player win!!!"}
-
-      first_player_choice == @scissor && second_player_choice == @stone ->
-        {:ok, "Second player win!!!"}
+    case game_calc_result do
+      0 -> {:ok, "Draw!"}
+      1 -> {:ok, "First player win!!!"}
+      _ -> {:ok, "Second player win!!!"}
     end
+  end
+
+  defp game_calc(first_player_item, second_player_item) do
+    Integer.mod(first_player_item - second_player_item, 3)
   end
 end
