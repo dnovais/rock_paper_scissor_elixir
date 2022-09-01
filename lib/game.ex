@@ -18,6 +18,9 @@ defmodule Game do
 
       first_player_choice == @scissor && second_player_choice == @paper ->
         {:ok, "First player win!!!"}
+
+      first_player_choice == @paper && second_player_choice == @stone ->
+        {:ok, "First player win!!!"}
     end
   end
 end
