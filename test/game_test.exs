@@ -80,5 +80,14 @@ defmodule GameTest do
 
       assert match == "Second player win!!!"
     end
+
+    test "when second player chooses stone and first player chooses scissors" do
+      first_player_choice = @scissor
+      second_player_choise = @stone
+
+      assert {:ok, match} = Game.play(first_player_choice, second_player_choise)
+
+      assert match == "Second player win!!!"
+    end
   end
 end
