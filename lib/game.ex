@@ -15,6 +15,9 @@ defmodule Game do
     cond do
       first_player_choice == second_player_choice ->
         {:ok, "Draw!"}
+
+      first_player_choice == @scissor && second_player_choice == @paper ->
+        {:ok, "First player win!!!"}
     end
   end
 end
